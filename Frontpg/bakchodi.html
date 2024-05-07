@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text Scroll Animation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Krona+One&display=swap" rel="stylesheet">  
+</head>
+<style>
+
+    .flextext {
+        display: flex;
+        flex-direction: row;
+        justify-content: center; /* Center vertically */
+        align-items: center; /* Center horizontally */
+        height: 100vh;
+        transition: transform 0.5s ease;
+    }
+    .intp {
+        font-size: 24px;
+        font-family: "Krona One", sans-serif;
+        color: #ef7306;
+        padding: 10px;
+        
+        width: fit-content; /* Adjust width as needed */
+
+      }
+    
+    .yrs {
+        font-family: "Krona One", sans-serif;
+        font-weight: 500;
+        font-style: Bold;
+        font-size: 24px;
+      }
+  
+</style>
+<body>
+    <div class="flextext">
+        <div class="yrs">4 Years Of</div>
+        <div class="intp">Div</div>
+    </div>
+    
+
+    <script> 
+        const texts = ["MEMORIES 😄", "CHUTIYAPE 🙂", "HARDSHIPS 😫", "CHAOS 🤯", "BAKCHODI 😆"]; 
+        const intpDiv = document.querySelector('.intp'); 
+        let currentIndex = 0;
+        
+        // Function to update text
+        function updateText() {
+          intpDiv.textContent = texts[currentIndex]; // Set the text content of the div
+          currentIndex = (currentIndex + 1) % texts.length; // Increment the index, looping back to 0 if it exceeds the array length
+        }
+        
+        // Call updateText initially
+        updateText();
+        
+        // Set interval to update text every 0.4 seconds
+        setInterval(updateText, 400);
+
+
+
+
+
+
+    </script>
+</body>
+</html>

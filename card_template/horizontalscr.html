@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Horizontal Scrolling</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+    .container {
+        width: calc(100% - 20px); /* Adjusted width to accommodate scrollbar */
+        overflow-x: auto; /* Enable horizontal scrollbar */
+        white-space: nowrap;
+        padding: 20px 10px; /* Adjusted padding to prevent content from sticking to scrollbar */
+    }
+    .item {
+        display: inline-block;
+        width: 200px;
+        height: 200px;
+        background-color: #ccc;
+        margin-right: 10px;
+    }
+</style>
+</head>
+<body>
+<div class="container" id="container">
+    <div class="item">Item 1</div>
+    <div class="item">Item 2</div>
+    <div class="item">Item 3</div>
+    <div class="item">Item 4</div>
+    <div class="item">Item 5</div>
+    <div class="item">Item 6</div>
+    <div class="item">Item 1</div>
+    <div class="item">Item 2</div>
+    <div class="item">Item 3</div>
+    <div class="item">Item 4</div>
+    <div class="item">Item 5</div>
+    <div class="item">Item 6</div>
+    <!-- Add more items as needed -->
+</div>
+
+<script>
+    const container = document.getElementById('container');
+    let scrollValue = 0;
+
+    function scrollHorizontally(e) {
+        e = window.event || e;
+        const delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+        container.scrollLeft -= (delta * 40); // Multiplier determines scrolling speed
+        e.preventDefault();
+    }
+
+    if (container.addEventListener) {
+        // IE9, Chrome, Safari, Opera
+        container.addEventListener('mousewheel', scrollHorizontally, false);
+        // Firefox
+        container.addEventListener('DOMMouseScroll', scrollHorizontally, false);
+    } else {
+        // IE 6/7/8
+        container.attachEvent('onmousewheel', scrollHorizontally);
+    }
+</script>
+</body>
+</html>
